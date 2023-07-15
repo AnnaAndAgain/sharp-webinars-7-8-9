@@ -38,6 +38,7 @@ int ReadInt(string text)
     return result;
 }
 
+/*
 void PrintDictionary(int[,] tmpArray)
 {
 
@@ -46,7 +47,7 @@ void PrintDictionary(int[,] tmpArray)
         if (tmpArray[i, 1]>0) Console.WriteLine($"{tmpArray[i, 0]} встречается {tmpArray[i, 1]} раз(а)");
     }
 }
-
+*/
 
 void PrintDictionary1(int[] tmpArray)
 {
