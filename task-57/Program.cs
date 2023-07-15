@@ -47,6 +47,18 @@ void PrintDictionary(int[,] tmpArray)
     }
 }
 
+
+void PrintDictionary1(int[] tmpArray)
+{
+
+    for (int i = 0; i < tmpArray.GetLength(0); i++)
+    {
+        if (tmpArray[i]>0) Console.WriteLine($"{i} встречается {tmpArray[i]} раз(а)");
+    }
+}
+
+
+/* здесь с кучей прогонов вариант:
 int[,] CreateDictionary(int[,] tmpArray, int tmpArrMin, int tmpArrMax)
 {
     int [,] result = new int [tmpArrMax-tmpArrMin, 2];
@@ -73,17 +85,31 @@ int[,] CreateDictionary(int[,] tmpArray, int tmpArrMin, int tmpArrMax)
     }
     return result;
 }
+*/
+
+int[] CreateDictionary1(int[,] tmpArray, int tmpArrMin, int tmpArrMax)
+{
+    int [] result = new int [tmpArrMax-tmpArrMin];
+    for (int i = 0; i < tmpArray.GetLength(0); i++) //перебираем строки
+    {
+        for (int j = 0; j < tmpArray.GetLength(1); j++) //и столбцы, вместе - элементы
+        {
+            result[tmpArray[i, j]]++;
+        }
+    }
+    return result;
+}
 
 void Main()
 {
     int minV = 0;
     int maxV = 10;
-    int[,] myArray = FillArrayRandom(5, 6, minV, maxV);
+    int[,] myArray = FillArrayRandom(ReadInt("Введите число строк:"), ReadInt("Введите число столбцов:"), minV, maxV);
     PrintArray(myArray);
     Console.WriteLine();
 
-    int[,] arrDict = CreateDictionary(myArray, minV, maxV);
-    PrintDictionary(arrDict);
+    int[] arrDict = CreateDictionary1(myArray, minV, maxV);
+    PrintDictionary1(arrDict);
 }
 
 Main();
